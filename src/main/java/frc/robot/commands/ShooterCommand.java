@@ -51,7 +51,8 @@ double shooterSpeed = 0;
        shooterSpeed = 0.9;
     } else {
       shooterSpeed = 0;
-    }
+    } shooterSubsystem.controlShooter(shooterSpeed);
+    //testing
     }  
 
   // Called once the command ends or is interrupted.

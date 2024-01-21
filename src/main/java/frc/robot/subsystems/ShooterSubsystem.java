@@ -35,10 +35,9 @@ public void controlShooter(double shooterSpeed) {
  public void periodic() {
    // This method will be called once per scheduler run
  }
- public void set(double speed1) {
-   // TODO Auto-generated method stub
-   throw new UnsupportedOperationException("Unimplemented method 'set'");
- }
+ public void setspeed(double speed1) {
+  
+  }
 }
 
 
