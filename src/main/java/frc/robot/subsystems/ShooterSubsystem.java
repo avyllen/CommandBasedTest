@@ -18,13 +18,11 @@ private TalonFX bshooter2;
 
 
  /** Creates a new ShooterSubsystem. */
- public ShooterSubsystem(int topMotorID, int bottomMotorID) {
+ public ShooterSubsystem() {
 tshooter1 = new TalonFX(Constants.ShooterConstants.tshooter1ID);
 bshooter2 = new TalonFX(Constants.ShooterConstants.bshooter2ID);
  }
- public ShooterSubsystem() {
-  //TODO Auto-generated constructor stub
-}
+
 public void controlShooter(double shooterSpeed) {
    tshooter1.set(shooterSpeed);
    bshooter2.set(shooterSpeed);
