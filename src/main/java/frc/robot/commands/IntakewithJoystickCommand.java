@@ -4,59 +4,64 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ShooterSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.RobotContainer;
-
-
+import frc.robot.subsystems.IntakeSubsystem;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 /** An example command that uses an example subsystem. */
-public class ShooterCommand extends Command {
+public class IntakewithJoystickCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ShooterSubsystem shooterSubsystem;
-double shooterSpeed = 0;
+  private final IntakeSubsystem DrivetrainSubsystem;
+    double BottomMotor = 0;
+    double TopMotor = 0;
+// }
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ShooterCommand(ShooterSubsystem shooterSubsystem) {
-    this.shooterSubsystem = shooterSubsystem;
+  public IntakewithJoystickCommand(IntakeSubsystem subsystem) {
+    this.DrivetrainSubsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(shooterSubsystem);
-
+    addRequirements(DrivetrainSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Starting intake command");
-
-  }
+    System.out.println("Starting Joystick drive command");
+    BottomMotor = 0;
+    TopMotor = 0;
+  } 
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
     
-
-
-    if (RobotContainer.xboxController.getAButton()) {
-      shooterSpeed = 0.5;
+       if (RobotContainer.xboxController.getBackButton()) {
+      //this is intake
+      BottomMotor = 0.1;
+      TopMotor = -0.1;
+    
+  }
+     else if (RobotContainer.xboxController.getStartButton()){
+//this is outtake
+BottomMotor = -0.1;
+TopMotor = 0.1;
+     }
+     else {
+      BottomMotor = 0;
+      TopMotor = 0;
     }
-     else if (RobotContainer.xboxController.getBButton()){
-       shooterSpeed = 0.7;
-     } else if (RobotContainer.xboxController.getXButton()){
-       shooterSpeed = 0.9;
-    } else {
-      shooterSpeed = 0;
-    } shooterSubsystem.controlShooter(shooterSpeed);
-    //testing
-    }  
+      DrivetrainSubsystem.IntakewithJoystickCommand(BottomMotor, TopMotor);
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+public void end(boolean interrupted) {} 
+  
 
   // Returns true when the command should end.
   @Override
@@ -64,4 +69,3 @@ double shooterSpeed = 0;
     return false;
   }
 }
-

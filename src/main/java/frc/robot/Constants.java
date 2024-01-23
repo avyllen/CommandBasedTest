@@ -3,6 +3,8 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import com.revrobotics.RelativeEncoder;
+
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -14,10 +16,9 @@ package frc.robot;
  */
 public final class Constants {
 
-  public static final class IntakeConstants{
-      
-      public static final int intakeMotor1ID = 57;
-      public static final int intakeMotor2ID = 2;
+  public static final class DrivetrainConstants  {
+    public static final int TopMotorCANID = 57;
+    public static final int BottomMotorCANID = 2;
   }
 
   public static final class ShooterConstants{
